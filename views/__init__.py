@@ -5,7 +5,7 @@ from VetLife import app
 @app.route('/index')
 
 def hello_world():
-    return 'Пока мир!'
+    return 'Привет мир!'
 
 
 if __name__ == '__main__':
