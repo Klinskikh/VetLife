@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 from VetLife import app
 
 @app.route('/')
 @app.route('/index')
 
 def hello_world():
-    return 'Hello World!'
+    return 'Пока мир!'
 
 
 if __name__ == '__main__':
