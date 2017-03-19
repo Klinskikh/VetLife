@@ -10,15 +10,15 @@ def index():
     user = g.user
     posts = [
         {
-            'author': { 'nickname': 'John' },
+            'author': {'nickname': 'John'},
             'body': 'Beautiful day in Portland!'
         },
         {
-            'author': { 'nickname': 'Susan' },
+            'author': {'nickname': 'Susan'},
             'body': 'The Avengers movie was so cool!'
         }
     ]
     return render_template('index.html',
-        title = 'Home',
-        user = user,
-        posts = posts)
+                           title='Home',
+                           user=user,
+                           posts=posts)
