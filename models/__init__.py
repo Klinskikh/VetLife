@@ -1,4 +1,4 @@
-from .User import User
+from .User import User, ROLE_USER, ROLE_ADMIN
 from .DosageType import DosageType
 from .Unit import Unit
 from .Medicine import Medicine

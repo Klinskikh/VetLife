@@ -1,8 +1,7 @@
 from VetLife import db
-from .BaseModel import BaseModel
 
 
-class Dosage(BaseModel):
+class Dosage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     d_from = db.Column(db.Integer)
     d_to = db.Column(db.Integer)

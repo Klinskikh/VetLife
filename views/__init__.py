@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from VetLife import app
+from flask_login import login_required
+from flask.templating import render_template
+from flask import g
 from .auth import login
-
 
 @app.route('/')
 @app.route('/index')
