@@ -3,6 +3,7 @@ from flask_login import login_required
 from flask import flash, render_template, redirect, url_for
 from VetLife.models import User
 
+
 @app.route('/user/<nickname>')
 @login_required
 def user(nickname):

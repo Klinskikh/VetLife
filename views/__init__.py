@@ -4,6 +4,7 @@ from flask_login import login_required
 from flask.templating import render_template
 from flask import g
 from .auth import login
+from .user import user
 
 
 @app.route('/')
