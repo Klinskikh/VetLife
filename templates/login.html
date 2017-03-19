@@ -19,7 +19,7 @@ function set_openid(openid, pr)
 <form action="" method="post" name="login">
     {{form.hidden_tag()}}
     <p>
-        Пожалуйста введите свой OpenID или выбирите одно из провайдеров приведеных ниже:<br>
+        Пожалуйста введите свой OpenID или выбирите одного из провайдеров приведеных ниже:<br>
         {{form.openid(size=80)}}<br>
         {% for error in form.errors.openid %}
         <span style="color: red;">[{{error}}]</span>
