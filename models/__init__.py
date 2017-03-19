@@ -1,4 +1,5 @@
 from .User import User
-from .AnimalType import AnimalType
+from .DosageType import DosageType
 from .Unit import Unit
 from .Medicine import Medicine
+from .Dosage import Dosage
