@@ -1,5 +1,6 @@
-db_login:
-db_psw:
-db_ip:
-db_name:
-secret_key:
+'db_login': ''
+'db_psw': ''
+'db_ip': ''
+'db_name': ''
+'secret_key': ''
+'db_provider': 'mysql+pysql'
