@@ -31,8 +31,8 @@ def edit():
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
         db.session.commit()
-        flash('Ваши изменения сохранены.')
-        return redirect(url_for('редактировать'))
+        flash('Ваши изменения были сохранены.')
+        return redirect(url_for('edit'))
     else:
         form.nickname.data = g.user.nickname
         form.about_me.data = g.user.about_me
