@@ -1,0 +1,15 @@
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Наименование</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for medicine in medicines %}
+        <tr>
+            <td><a href="medicine{{ medicine.id }}">{{ medicine.title }}</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<a class="btn btn-default" href="/medicineadd" role="button">Добавить</a>

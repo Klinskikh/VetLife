@@ -28,6 +28,7 @@ def medicine_list():
     ctx = dict(medicines=medicines, title=u'Препараты')
     return render_template('medicine/list.html', **ctx)
 
+
 @app.route('/medicineadd', methods=['GET', 'POST'])
 def medicine_add():
     medicine = Medicine()
@@ -39,7 +40,7 @@ def medicine_add():
                 db.session.add(medicine)
                 db.session.commit()
                 flash(u"Сохранено")
-                return redirect(url_for("medicine"))
+                return redirect(url_for('medicine_list'))
     return render_template('medicine/edit.html',
                            title=u'Лекарства',
                            form=form)
