@@ -1,13 +1,20 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+import logging
+import os
+from config import basedir
+logger = logging.getLogger('root')
+fileHandler = logging.FileHandler(os.path.join(basedir, 'vet_life.log'))
+logger.setLevel(logging.INFO)
+logger.addHandler(fileHandler)
+logger.info(u'Start...')
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 import os
 from flask_login import LoginManager
 from flask_openid import OpenID
-from config import basedir
+
 
 
 lm = LoginManager()

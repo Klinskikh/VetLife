@@ -1,6 +1,7 @@
 import os
 import yaml
-with open('config.yaml', 'r') as f:
+basedir = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(basedir,'config.yaml'), 'r') as f:
     config = yaml.load(f)
 
 WTF_CSRF_ENABLED = True
@@ -14,7 +15,5 @@ OPENID_PROVIDERS = [
     { 'name': 'Flickr', 'url': 'http://www.flickr.com/<username>' },
     { 'name': 'MyOpenID', 'url': 'https://www.myopenid.com' }]
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{db_login}:{db_psw}@{db_ip}/{db_name}'.format(**config)
+SQLALCHEMY_DATABASE_URI = '{db_provider}://{db_login}:{db_psw}@{db_ip}/{db_name}'.format(**config)
 SQLALCHEMY_TRACK_MODIFICATIONS = True
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
