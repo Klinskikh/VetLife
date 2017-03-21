@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 import logging
 import os
 from config import basedir
+
+FLASK_DEBUG = 1
 logger = logging.getLogger('root')
 fileHandler = logging.FileHandler(os.path.join(basedir, 'vet_life.log'))
 logger.setLevel(logging.INFO)
