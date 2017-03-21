@@ -9,4 +9,6 @@ class ModelForm(BaseModelForm):
         return db.session
 
 from .Login import LoginForm
+from .Profile import EditForm
+from .Edit_profile import EditForm
 from .Medicine import MedicineForm

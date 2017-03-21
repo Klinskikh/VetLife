@@ -5,6 +5,8 @@ from flask.templating import render_template
 from flask import g
 from .auth import login
 from .medicine import medicine_edit, medicine_list
+from .user import user, edit
+
 
 @app.route('/')
 @app.route('/index')
