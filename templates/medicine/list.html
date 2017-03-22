@@ -12,7 +12,13 @@
         <tbody>
         {% for medicine in medicines %}
             <tr>
-                <td><a href="medicine{{ medicine.id }}">{{ medicine.title }}</a></td>
+                <td><a href="medicine{{ medicine.id }}">
+            {% if medicine.title %}
+                {{ medicine.title }}
+            {% else %}
+                не задан
+            {% endif %}
+                </a></td>
             </tr>
         {% endfor %}
         </tbody>

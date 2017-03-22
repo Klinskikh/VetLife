@@ -24,7 +24,7 @@ def medicine_edit(id):
 
 @app.route('/medicine', methods=['GET', 'POST'])
 def medicine_list():
-    medicines = Medicine.query.all()
+    medicines = Medicine.query.order_by('title').all()
     ctx = dict(medicines=medicines, title=u'Препараты')
     return render_template('medicine/list.html', **ctx)
 
