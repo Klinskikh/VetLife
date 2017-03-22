@@ -22,13 +22,6 @@ def medicine_edit(id):
                            form=form)
 
 
-@app.route('/medicine', methods=['GET', 'POST'])
-def medicine_list():
-    medicines = Medicine.query.order_by('title').all()
-    ctx = dict(medicines=medicines, title=u'Препараты')
-    return render_template('medicine/list.html', **ctx)
-
-
 @app.route('/medicineadd', methods=['GET', 'POST'])
 def medicine_add():
     medicine = Medicine()
@@ -44,3 +37,12 @@ def medicine_add():
     return render_template('medicine/edit.html',
                            title=u'Лекарства',
                            form=form)
+
+@app.route('/medicine', methods=['GET', 'POST'])
+def medicine_list():
+    medicines = Medicine.query.order_by('title').all()
+    ctx = dict(medicines=medicines, title=u'Препараты')
+    return render_template('medicine/list.html', **ctx)
+
+
+
