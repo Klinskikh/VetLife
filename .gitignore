@@ -2,3 +2,4 @@
 *.pyc
 run.py
 config.yaml
+migrations
