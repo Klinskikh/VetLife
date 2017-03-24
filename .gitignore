@@ -2,3 +2,6 @@
 *.pyc
 run.py
 config.yaml
+migrations
+tmp
+vet_life.log
