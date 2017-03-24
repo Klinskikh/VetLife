@@ -17,11 +17,19 @@
                         <p>
                         {{ form.title.label }}:<br>
                         {{ form.title(size=80) }}<br>
+                            {% if form.title.errors %}
+                                <ul class="errors">{% for error in form.title.errors %}
+                                    <li>{{ error }}</li>{% endfor %}</ul>
+                            {% endif %}
                         </p>
                     </div>
                     <div class="form-group">
                         {{ form.descr.label }}:<br>
                         {{ form.descr(rows=20, cols=200) }}<br>
+                        {% if form.descr.errors %}
+                            <ul class="errors">{% for error in form.descr.errors %}
+                                <li>{{ error }}</li>{% endfor %}</ul>
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Сохранить</button>
