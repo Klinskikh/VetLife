@@ -7,6 +7,7 @@ from .auth import login
 from .dosage import dosage_add, dosage_edit
 from .medicine import medicine_edit, medicine_list
 from .user import user, edit
+from .active_substance import active_substance_add, active_substance_edit
 
 
 @app.route('/')

@@ -11,7 +11,6 @@ def _process_request(id=None, active_substance_id=None):
         dosage = Dosage.query.get(id)
     else:
         dosage = Dosage(active_substance=active_substance)
-    form = DosageForm(obj=dosage)
     if request.method == 'POST':
         form = DosageForm(request.form, obj=dosage)
         if form.validate_on_submit():
@@ -20,9 +19,10 @@ def _process_request(id=None, active_substance_id=None):
                 db.session.add(dosage)
                 db.session.commit()
                 flash(u"Сохранено")
-                redirect(url_for('active_substance_edit', id=dosage.active_substance_id))
+                redirect(url_for('active_substance_edit', id=active_substance_id))
         else:
             flash(u"Неверные данные")
+    form = DosageForm(obj=dosage)
     ctx = dict(title=u'Дозировка', form=form, active_substance=active_substance)
     return render_template('dosage/edit.html', **ctx)
 

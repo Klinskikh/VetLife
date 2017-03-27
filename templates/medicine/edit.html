@@ -1,7 +1,5 @@
 <!-- extend from base layout -->
 {% extends "base.html" %}
-{% import 'admin/static.html' as admin_static with context %}
-{% import 'admin/lib.html' as lib with context %}
 {% block content %}
     <div class="row">
         <h2>{{ title }}</h2>
@@ -20,7 +18,9 @@
                 </div>
                 <div class="form-group"><p>
                     {{ form.active_substance.label }}:<br>
-                    {{ form.active_substance }}<br>
+                    {{ form.active_substance }}
+                    <a href="{{ url_for('active_substance_edit', id=form.active_substance, medicine_id=form._obj.id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="{{ url_for('active_substance_add', medicine_id=form._obj.id) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                 </p>
                 </div>
                 <div class="form-group"><p>
@@ -42,6 +42,11 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#active_substance").select2({ width: '300px' });
+        });
+    </script>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor
         // instance, using default configuration.
