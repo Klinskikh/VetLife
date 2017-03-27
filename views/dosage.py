@@ -19,7 +19,6 @@ def _process_request(id=None, active_substance_id=None):
                 db.session.add(dosage)
                 db.session.commit()
                 flash(u"Сохранено")
-                redirect(url_for('active_substance_edit', id=active_substance_id))
         else:
             flash(u"Неверные данные")
     form = DosageForm(obj=dosage)
@@ -27,7 +26,7 @@ def _process_request(id=None, active_substance_id=None):
     return render_template('dosage/edit.html', **ctx)
 
 
-@app.route('/dosage_edit<id><active_substance_id>', methods=['GET', 'POST'])
+@app.route('/dosage_edit/<id>/<active_substance_id>', methods=['GET', 'POST'])
 def dosage_edit(id, active_substance_id):
     return _process_request(id, active_substance_id)
 

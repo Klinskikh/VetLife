@@ -3,10 +3,10 @@ from wtforms.widgets import TextArea
 from wtforms_alchemy import QuerySelectField
 from . import ModelForm
 from VetLife import models
-
+from .. import db
 
 class MedicineForm(ModelForm):
-    active_substance = QuerySelectField(query_factory=models.ActiveSubstance.query.all, label=u"Действующее вещество")
+    active_substance = QuerySelectField(query_factory=lambda: db.session.query(models.ActiveSubstance), label=u"Действующее вещество")
 
     class Meta:
         model = models.Medicine
