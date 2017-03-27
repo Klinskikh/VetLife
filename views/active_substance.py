@@ -28,7 +28,7 @@ def _process_request(medicine_id, id=None):
     return render_template('active_substance/edit.html', **ctx)
 
 
-@app.route('/active_substance_add<id><medicine_id>', methods=['GET', 'POST'])
+@app.route('/active_substance_edit<id><medicine_id>', methods=['GET', 'POST'])
 def active_substance_edit(id, medicine_id):
     return _process_request(id, medicine_id)
 
