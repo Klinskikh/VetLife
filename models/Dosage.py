@@ -4,12 +4,11 @@ from VetLife import db
 
 class Dosage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    d_from = db.Column(db.Float, info={'label': u'От'})
-    d_to = db.Column(db.Float, info={'label': u'До'})
-    medicine_id = db.Column(db.Integer, db.ForeignKey('medicine.id'))
-    medicine = db.relationship('Medicine', backref=db.backref('dosages', lazy='dynamic'), info={'label': u'Препарат'})
-    dosage_type_id = db.Column(db.Integer, db.ForeignKey('dosage_type.id'))
-    dosage_type = db.relationship('DosageType', backref=db.backref('dosages', lazy='dynamic'), info={'label': u'Тип дозировки'})
+    animal_type_id = db.Column(db.Integer, db.ForeignKey('animal_type.id'))
+    animal_type = db.relationship('AnimalType', backref=db.backref('animal_types', lazy='dynamic'), info={'label': u'Вид животного'})
+    active_substance_id = db.Column(db.Integer, db.ForeignKey('active_substance.id'))
+    active_substance = db.relationship('ActiveSubstance', backref=db.backref('active_substances', lazy='dynamic'), info={'label': u'Дейсвующее вещество'})
+    value = db.Column(db.Float, info={'label': u'Дозировка (мг/кг)'})
 
     def __repr__(self):
         return u'<Дозировка от {0} до {1}>'.format(self.d_from, self.d_to)

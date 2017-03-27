@@ -3,20 +3,18 @@
 {% block content %}
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8">
-            <h2>{{ medicine.title }}</h2>
+            <h2>{{ active_substance.name }}</h2>
             <form action="" method="post" name="dosage" class="form-horizontal">
                 {{ form.hidden_tag() }}
                 <div class="form-group">
-                    <p>
-                        {{ form.dosage_type.label }}:<br>
-                        {{ form.dosage_type }}<br>
-                    </p>
                     <h4>Дозировка</h4>
                     <p>
-                        {{ form.d_from.label }}:
-                        {{ form.d_from }}
-                        {{ form.d_to.label }}:
-                        {{ form.d_to }}
+                        {{ form.animal_type.label }}:
+                        {{ form.animal_type }}
+                    </p>
+                    <p>
+                        {{ form.value.label }}:
+                        {{ form.value }}
                     </p>
                 </div>
                 <div class="form-group">
