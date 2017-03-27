@@ -19,7 +19,7 @@
                 <div class="form-group"><p>
                     {{ form.active_substance.label }}:<br>
                     {{ form.active_substance }}
-                    <a href="{{ url_for('active_substance_edit', id=form._obj.active_substance, medicine_id=form._obj.id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="{{ url_for('active_substance_edit', id=form._obj.active_substance.id, medicine_id=form._obj.id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="{{ url_for('active_substance_add', medicine_id=form._obj.id) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                 </p>
                 </div>
