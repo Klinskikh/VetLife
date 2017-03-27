@@ -30,7 +30,7 @@ def _process_request(medicine_id, id=None):
 
 @app.route('/active_substance_edit/<id>/<medicine_id>', methods=['GET', 'POST'])
 def active_substance_edit(id, medicine_id):
-    return _process_request(id, medicine_id)
+    return _process_request(id=id, medicine_id=medicine_id)
 
 
 @app.route('/active_substance_add<medicine_id>', methods=['GET', 'POST'])
