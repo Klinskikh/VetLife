@@ -10,3 +10,6 @@ class Dosage(db.Model):
     medicine = db.relationship('Medicine', backref=db.backref('dosages', lazy='dynamic'), info={'label': u'Препарат'})
     dosage_type_id = db.Column(db.Integer, db.ForeignKey('dosage_type.id'))
     dosage_type = db.relationship('DosageType', backref=db.backref('dosages', lazy='dynamic'), info={'label': u'Тип дозировки'})
+
+    def __repr__(self):
+        return u'<Дозировка от {0} до {1}>'.format(self.d_from, self.d_to)

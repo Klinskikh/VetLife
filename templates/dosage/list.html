@@ -7,7 +7,7 @@
     <tbody>
     {% for dosage in dosages %}
         <tr>
-            <td><a href="{{ url_for('dosage_edit', id=dosage.id) }}">{{ dosage }}</a></td>
+            <td><a href="{{ url_for('dosage_edit', id=dosage.id, medicine_id=form._obj.id) }}">{{ dosage }}</a></td>
         </tr>
     {% endfor %}
     </tbody>

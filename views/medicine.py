@@ -18,10 +18,8 @@ def medicine_edit(id):
                 db.session.commit()
                 flash(u"Сохранено")
     dosages = Dosage.query.filter_by(medicine=medicine)
-    return render_template('medicine/edit.html',
-                           title=u'Лекарства',
-                           form=form,
-                           dosages=dosages)
+    ctx = dict(dosages=dosages, form=form, title=medicine.title)
+    return render_template('medicine/edit.html', **ctx)
 
 
 @app.route('/medicineadd', methods=['GET', 'POST'])
