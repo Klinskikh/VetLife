@@ -11,4 +11,4 @@ class Dosage(db.Model):
     value = db.Column(db.Float, info={'label': u'Дозировка (мг/кг)'})
 
     def __repr__(self):
-        return u'<Дозировка от {0} до {1}>'.format(self.d_from, self.d_to)
+        return u'<Дозировка для {0}:{1}>'.format(self.animal_type, self.value)
