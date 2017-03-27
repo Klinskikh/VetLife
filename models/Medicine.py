@@ -8,7 +8,7 @@ class Medicine(db.Model):
     descr = db.Column(db.String(65000), info={'label': u'Описание'})
     unit_id = db.Column(db.Integer, db.ForeignKey('unit.id'))
     unit = db.relationship('Unit', backref=db.backref('dosages', lazy='dynamic'), info={'label': u'Ед. измерения'})
-    active_amount = db.Column(db.Integer, info={'label': u'Количество действующего вещества'})
+    active_amount = db.Column(db.Float, info={'label': u'Количество действующего вещества'})
 
     def __repr__(self):
         return self.title
