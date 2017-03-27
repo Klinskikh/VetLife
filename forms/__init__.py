@@ -10,3 +10,7 @@ class ModelForm(BaseModelForm):
 
 from .Login import LoginForm
 from .Medicine import MedicineForm
+from .Dosage import DosageForm
+from .DosageType import DosageTypeForm
+from .Unit import UnitForm
+from .Profile import ProfileForm

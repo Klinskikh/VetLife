@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .. import app, db
 from ..forms import MedicineForm
-from ..models import Medicine
+from ..models import Medicine, Dosage
 from flask import render_template, flash, redirect, request, url_for
 
 
@@ -17,9 +17,11 @@ def medicine_edit(id):
                 db.session.add(medicine)
                 db.session.commit()
                 flash(u"Сохранено")
+    dosages = Dosage.query.filter_by(medicine=medicine)
     return render_template('medicine/edit.html',
                            title=u'Лекарства',
-                           form=form)
+                           form=form,
+                           dosages=dosages)
 
 
 @app.route('/medicineadd', methods=['GET', 'POST'])

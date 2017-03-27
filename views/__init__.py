@@ -4,7 +4,10 @@ from flask_login import login_required
 from flask.templating import render_template
 from flask import g
 from .auth import login
+from .dosage import dosage_add, dosage_edit
 from .medicine import medicine_edit, medicine_list
+from .user import user, edit
+
 
 @app.route('/')
 @app.route('/index')
