@@ -4,4 +4,4 @@ from .Unit import Unit
 from .Medicine import Medicine
 from .Dosage import Dosage
 from .Audit import Audit
-from .Avatar import User
+

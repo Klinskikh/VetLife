@@ -1,15 +1,15 @@
 <table class="table table-bordered">
     <thead>
     <tr>
-        <th>Наименование</th>
+        <th>Дозировка</th>
     </tr>
     </thead>
     <tbody>
-    {% for medicine in medicines %}
+    {% for dosage in dosages %}
         <tr>
-            <td><a href="medicine{{ medicine.id }}">{{ medicine.title }}</a></td>
+            <td><a href="{{ url_for('dosage_edit', id=dosage.id) }}">{{ dosage }}</a></td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
-<a class="btn btn-default" href="/medicineadd" role="button">Добавить</a>
+<a class="btn btn-default" href="{{ url_for('dosage_add', medicine_id=form._obj.id) }}" role="button">Добавить</a>

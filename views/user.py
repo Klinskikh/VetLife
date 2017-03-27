@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 from VetLife import app, db
 from flask_login import login_required
 from flask import flash, render_template, redirect, url_for
 from VetLife.models import User
-from VetLife.forms import LoginForm, EditForm
+from VetLife.forms import LoginForm, ProfileForm
 from flask import g
 
 
@@ -25,13 +26,13 @@ def user(nickname):
 @app.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
-    form = EditForm()
+    form = ProfileForm()
     if form.validate_on_submit():
         g.user.nickname = form.nickname.data
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
         db.session.commit()
-        flash('Ваши изменения были сохранены.')
+        flash(u'Ваши изменения были сохранены.')
         return redirect(url_for('edit'))
     else:
         form.nickname.data = g.user.nickname
