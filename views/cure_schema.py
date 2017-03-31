@@ -36,7 +36,7 @@ def cure_schema_add():
                 flash(u"Сохранено")
                 return redirect(url_for('cure_schema_list'))
     return render_template('cure_schema/edit.html',
-                           title=u'Лекарства',
+                           title=u'Схемы лечения',
                            form=form)
 
 
