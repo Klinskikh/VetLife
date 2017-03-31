@@ -5,3 +5,4 @@ from .Dosage import Dosage
 from .Audit import Audit
 from .ActiveSubstance import ActiveSubstance
 from .Medicine import Medicine
+from .CureSchema import CureSchema

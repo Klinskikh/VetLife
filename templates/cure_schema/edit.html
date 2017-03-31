@@ -1,0 +1,39 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <h2>{{ title }}</h2>
+        <div class="col-xs-12 col-sm-6 col-md-8">
+            <form action="" method="post" name="login" class="form-horizontal">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <p>
+                        {{ form.title.label }}:<br>
+                        {{ form.title(size=80) }}<br>
+                        {% if form.title.errors %}
+                            <ul class="errors">{% for error in form.title.errors %}
+                                <li>{{ error }}</li>{% endfor %}</ul>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="form-group">
+                    {{ form.descr.label }}:<br>
+                    {{ form.descr(rows=20, cols=200) }}<br>
+                    {% if form.descr.errors %}
+                        <ul class="errors">{% for error in form.descr.errors %}
+                            <li>{{ error }}</li>{% endfor %}</ul>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('descr');
+    </script>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Наименование</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for cure in cure_schemas.items %}
+            <tr>
+                <td><a href="{{ url_for('cure_schema_edit', id=cure.id) }}">
+                    {% if cure.title %}
+                        {{ cure.title }}
+                    {% else %}
+                        не задан
+                    {% endif %}
+                </a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="{{ url_for('cure_schema_list', page = cure_schemas.prev_num) }}" class="btn btn-default"
+                {% if not cure_schemas.has_prev %} disabled="disabled"{% endif %}>Предыдущая</a>
+        <a href="{{ url_for('cure_schema_list', page = cure_schemas.next_num) }}" class="btn btn-default"
+                {% if not cure_schemas.has_next %} disabled="disabled"{% endif %}>Следующая</a>
+    </div>
+    <a class="btn btn-default" href="{{ url_for('cure_schema_add') }}" role="button">Добавить</a>
+{% endblock %}

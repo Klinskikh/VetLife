@@ -8,6 +8,7 @@ from .dosage import dosage_add, dosage_edit
 from .medicine import medicine_edit, medicine_list
 from .user import user, edit
 from .active_substance import active_substance_add, active_substance_edit
+from .cure_schema import cure_schema_add, cure_schema_list, cure_schema_edit
 
 
 @app.route('/')
