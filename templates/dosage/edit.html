@@ -3,6 +3,8 @@
 {% block content %}
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8">
+            <a href="{{ url_for('medicine_edit', id=medicine.id) }}">\{{ medicine.title }}</a>
+            <a href="{{ url_for('active_substance_edit', id=active_substance.id, medicine_id=medicine.id) }}">\{{ active_substance.name }}</a>
             <h2>{{ active_substance.name }}</h2>
             <form action="" method="post" name="dosage" class="form-horizontal">
                 {{ form.hidden_tag() }}

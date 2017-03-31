@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from flask import g
 from .. import app, db
 from ..forms import ActiveSubstanceForm
-from ..models import Dosage, ActiveSubstance
+from ..models import Dosage, ActiveSubstance, Medicine
 from flask import render_template, flash, redirect, request, url_for
 
 
@@ -12,6 +13,7 @@ def _process_request(medicine_id, id=None):
     else:
         dosages = []
         active_substance = ActiveSubstance()
+    medicine = Medicine.query.get(medicine_id)
     form = ActiveSubstanceForm(obj=active_substance)
     if request.method == 'POST':
         form = ActiveSubstanceForm(request.form, obj=active_substance)
@@ -19,12 +21,16 @@ def _process_request(medicine_id, id=None):
             if form.validate():
                 form.populate_obj(active_substance)
                 db.session.add(active_substance)
+                medicine.active_substance = active_substance
+                db.session.add(medicine)
                 db.session.commit()
                 flash(u"Сохранено")
                 redirect(url_for('active_substance_edit', id=active_substance.id, medicine_id=medicine_id))
         else:
             flash(u"Неверные данные")
+
     ctx = dict(title=u'Активное вещество', form=form, dosages=dosages)
+    ctx['medicine'] = medicine
     return render_template('active_substance/edit.html', **ctx)
 
 
@@ -33,7 +39,7 @@ def active_substance_edit(id, medicine_id):
     return _process_request(id=id, medicine_id=medicine_id)
 
 
-@app.route('/active_substance_add<medicine_id>', methods=['GET', 'POST'])
+@app.route('/active_substance_add/<medicine_id>', methods=['GET', 'POST'])
 def active_substance_add(medicine_id):
     return _process_request(medicine_id)
 

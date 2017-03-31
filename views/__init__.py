@@ -29,3 +29,7 @@ def index():
                            title='Home',
                            user=user,
                            posts=posts)
+
+@app.before_request
+def before_request():
+    g.back_refs = []
