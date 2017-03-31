@@ -7,6 +7,7 @@ from flask import render_template, flash, redirect, request, url_for
 
 def _process_request(id=None, active_substance_id=None, medicine_id=None):
     active_substance = ActiveSubstance.query.get(active_substance_id)
+    dosage = None
     if id:
         dosage = Dosage.query.get(id)
         form = DosageForm(obj=dosage)
@@ -15,7 +16,8 @@ def _process_request(id=None, active_substance_id=None, medicine_id=None):
 
     medicine = Medicine.query.get(medicine_id)
     if request.method == 'POST':
-        dosage = Dosage(active_substance=active_substance)
+        if not id:
+            dosage = Dosage(active_substance=active_substance)
         form = DosageForm(request.form, obj=dosage)
         if form.validate_on_submit():
             if form.validate():
