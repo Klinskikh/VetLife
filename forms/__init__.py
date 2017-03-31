@@ -14,3 +14,4 @@ from .Dosage import DosageForm
 from .Unit import UnitForm
 from .Profile import ProfileForm
 from .ActiveSubstance import ActiveSubstanceForm
+from .SearchForm import SearchForm

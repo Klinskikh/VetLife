@@ -3,7 +3,12 @@
 
 {% block content %}
     <h2>{{ title }}</h2>
-    <a class="btn btn-default" href="{{ url_for('medicine_add') }}" role="button">Добавить</a>
+    <form style="display: inline;" action="{{url_for('medicine_search')}}" method="post" name="search">{{search_form.hidden_tag()}}{{search_form.search(size=20)}}<input type="submit" value="Search"></form>
+    <div>
+    {% for link in fast_links %}
+        <a href="{{ fast_links[link] }}">{{ link }}</a>
+    {% endfor %}
+    </div>
     <table class="table table-bordered">
         <thead>
         <tr>

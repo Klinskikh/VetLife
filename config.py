@@ -17,3 +17,4 @@ OPENID_PROVIDERS = [
 
 SQLALCHEMY_DATABASE_URI = '{db_provider}://{db_login}:{db_psw}@{db_ip}/{db_name}'.format(**config)
 SQLALCHEMY_TRACK_MODIFICATIONS = True
+WHOOSH_BASE = os.path.join(basedir, 'search.db')
