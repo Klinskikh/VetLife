@@ -25,6 +25,7 @@ def _process_request(id=None, active_substance_id=None, medicine_id=None):
                 db.session.add(dosage)
                 db.session.commit()
                 flash(u"Сохранено")
+                return redirect(url_for('active_substance_edit', id=active_substance.id, medicine_id=medicine.id))
         else:
             flash(u"Неверные данные")
 
