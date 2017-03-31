@@ -11,18 +11,24 @@
         </tr>
         </thead>
         <tbody>
-        {% for medicine in medicines %}
+        {% for medicine in medicines.items %}
             <tr>
                 <td><a href="{{ url_for('medicine_edit', id=medicine.id) }}">
-            {% if medicine.title %}
-                {{ medicine.title }}
-            {% else %}
-                не задан
-            {% endif %}
+                    {% if medicine.title %}
+                        {{ medicine.title }}
+                    {% else %}
+                        не задан
+                    {% endif %}
                 </a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div>
+        <a href="{{ url_for('medicine_list', page = medicines.prev_num) }}" class="btn btn-default"
+                {% if not medicines.has_prev %} disabled="disabled"{% endif %}>Предыдущая</a>
+        <a href="{{ url_for('medicine_list', page = medicines.next_num) }}" class="btn btn-default"
+                {% if not medicines.has_next %} disabled="disabled"{% endif %}>Следующая</a>
+    </div>
     <a class="btn btn-default" href="{{ url_for('medicine_add') }}" role="button">Добавить</a>
 {% endblock %}

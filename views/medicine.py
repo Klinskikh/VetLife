@@ -38,8 +38,9 @@ def medicine_add():
                            form=form)
 
 @app.route('/medicine', methods=['GET', 'POST'])
-def medicine_list():
-    medicines = Medicine.query.order_by('title').all()
+@app.route('/medicine/<int:page>', methods=['GET', 'POST'])
+def medicine_list(page=1):
+    medicines = Medicine.query.order_by('title').paginate(page, 10, False)
     ctx = dict(medicines=medicines, title=u'Препараты')
     return render_template('medicine/list.html', **ctx)
 
