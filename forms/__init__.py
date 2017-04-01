@@ -16,3 +16,4 @@ from .Profile import ProfileForm
 from .ActiveSubstance import ActiveSubstanceForm
 from .SearchForm import SearchForm
 from .CureSchema import CureSchemaForm
+from .CalcDosage import CalcDosageForm

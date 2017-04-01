@@ -2,12 +2,12 @@
 from collections import OrderedDict
 
 from .. import app, db
-from ..forms import MedicineForm, SearchForm
+from ..forms import MedicineForm, SearchForm, CalcDosageForm
 from ..models import Medicine, Dosage
 from flask import render_template, flash, redirect, request, url_for
 
 
-@app.route('/medicine<id>', methods=['GET', 'POST'])
+@app.route('/medicine<int:id>', methods=['GET', 'POST'])
 def medicine_edit(id):
     medicine = Medicine.query.get(id)
     form = MedicineForm(obj=medicine)
@@ -69,6 +69,18 @@ def medicine_search():
         return redirect(url_for('medicine_list'))
     return redirect(url_for('medicine_list', query=form.search.data))
 
+
+@app.route('/medicine_calc/<int:id>', methods=['GET', 'POST'])
+def medicine_calc(id):
+    form = CalcDosageForm()
+    medicine = Medicine.query.get(id)
+    ctx = dict(medicine=medicine)
+    if request.method == 'POST':
+        form = CalcDosageForm(request.form)
+        if form.validate_on_submit():
+            ctx['result'] = form.calc(medicine)
+    ctx['form'] = form
+    return render_template('medicine/calc.html', **ctx)
 
 
 

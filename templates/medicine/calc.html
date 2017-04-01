@@ -1,0 +1,30 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <h2>{{ title }}</h2>
+        <div class="col-xs-12 col-sm-6 col-md-8">
+        <a href="{{ url_for('medicine_edit', id=medicine.id) }}">{{ medicine.title }}</a>
+            <form action="" method="post" name="calc" class="form-horizontal">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <p>
+                        {{ form.animal_type.label }}:<br>
+                        {{ form.animal_type }}<br>
+                    </p>
+                </div>
+                <div class="form-group"><p>
+                    {{ form.weigth.label }}:<br>
+                    {{ form.weigth }}
+                </p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Рассчитать</button>
+                </div>
+            </form>
+            {% if result %}
+                Результат: {{ result }} мл.
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
