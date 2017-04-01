@@ -16,5 +16,6 @@ class CalcDosageForm(Form):
 
     def calc(self, medicine):
         dosage = models.Dosage.query.filter_by(active_substance=medicine.active_substance, animal_type=self.animal_type.data)
-        result = self.weigth.data * dosage[0].value / medicine.active_amount
+        result = dict(d_from=self.weigth.data * dosage[0].value / medicine.active_amount)
+        result['d_to'] = self.weigth.data * dosage[0].value_max / medicine.active_amount
         return result
