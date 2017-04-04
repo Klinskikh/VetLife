@@ -59,6 +59,8 @@ def medicine_list(page=1, query=None):
     medicines = medicines.order_by('title').paginate(page, 10, False)
     ctx = dict(medicines=medicines, title=u'Препараты', search_form=SearchForm())
     ctx['fast_links'] = get_fast_links(Medicine.query.order_by('title'))
+    ctx['url_next'] = query and url_for('medicine_list', page=medicines.next_num, query=query) or url_for('medicine_list', page=medicines.next_num)
+    ctx['url_prev'] = query and url_for('medicine_list', page=medicines.prev_num, query=query) or url_for('medicine_list', page=medicines.prev_num)
     return render_template('medicine/list.html', **ctx)
 
 

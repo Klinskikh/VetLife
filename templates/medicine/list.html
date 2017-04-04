@@ -30,9 +30,9 @@
         </tbody>
     </table>
     <div>
-        <a href="{{ url_for('medicine_list', page = medicines.prev_num) }}" class="btn btn-default"
+        <a href="{{ url_prev }}" class="btn btn-default"
                 {% if not medicines.has_prev %} disabled="disabled"{% endif %}>Предыдущая</a>
-        <a href="{{ url_for('medicine_list', page = medicines.next_num) }}" class="btn btn-default"
+        <a href="{{ url_next }}" class="btn btn-default"
                 {% if not medicines.has_next %} disabled="disabled"{% endif %}>Следующая</a>
     </div>
     <a class="btn btn-default" href="{{ url_for('medicine_add') }}" role="button">Добавить</a>
