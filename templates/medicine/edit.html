@@ -20,8 +20,13 @@
                     {{ form.active_substance.label }}:<br>
                     {{ form.active_substance }}
                     {% if form._obj %}
-                    <a href="{{ url_for('active_substance_edit', id=form._obj.active_substance.id, medicine_id=form._obj.id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="{{ url_for('active_substance_add', medicine_id=form._obj.id) }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+
+                        <a href="{% if form._obj.active_substance %} {{ url_for('active_substance_edit', id=form._obj.active_substance.id, medicine_id=form._obj.id) }}{% endif %}#"
+                           disabled="disabled"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+
+                        <a href="{{ url_for('active_substance_add', medicine_id=form._obj.id) }}"><i class="fa fa-plus"
+                                                                                                     aria-hidden="true"></i></a>
                     {% endif %}
                 </p>
                 </div>
@@ -40,16 +45,17 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Сохранить</button>
-                {% if form._obj %}
-                    <a href="{{ url_for('medicine_calc', id=form._obj.id) }}" class="btn btn-primary" {% if not form._obj.id %} disabled="disabled"{% endif %}>Расчитать</a>
-                {% endif %}
+                    {% if form._obj %}
+                        <a href="{{ url_for('medicine_calc', id=form._obj.id) }}" class="btn btn-primary"
+                                {% if not form._obj.id %} disabled="disabled"{% endif %}>Расчитать</a>
+                    {% endif %}
                 </div>
             </form>
         </div>
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#active_substance").select2({ width: '300px' });
+            $("#active_substance").select2({width: '300px'});
         });
     </script>
     <script>
