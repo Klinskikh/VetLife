@@ -27,7 +27,7 @@
                 <div class="form-group">
                     {{ form.cure.label }}:<br>
                     {{ form.cure(rows=20, cols=200) }}<br>
-                    {% if form.crue.errors %}
+                    {% if form.cure.errors %}
                         <ul class="errors">{% for error in form.cure.errors %}
                             <li>{{ error }}</li>{% endfor %}</ul>
                     {% endif %}
