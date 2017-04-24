@@ -9,5 +9,5 @@ from .. import db
 class CureSchemaForm(ModelForm):
     class Meta:
         model = models.CureSchema
-        field_args = {'descr': {'widget': TextArea()}}
+        field_args = {'descr': {'widget': TextArea()}, 'cure': {'widget': TextArea()}}
 
