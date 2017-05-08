@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from VetLife import app, db
 from flask_login import login_required
 from flask import flash, render_template, redirect, url_for
@@ -31,7 +32,7 @@ def edit():
         g.user.about_me = form.about_me.data
         db.session.add(g.user)
         db.session.commit()
-        flash('Ваши изменения были сохранены.')
+        flash(u'Ваши изменения были сохранены.')
         return redirect(url_for('edit'))
     else:
         form.nickname.data = g.user.nickname

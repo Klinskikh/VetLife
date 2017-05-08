@@ -2,7 +2,7 @@
 import sys
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-sys.path.append('/home/k/kerlaeda/vetlife.klinskih.com/public_html')
+sys.path.append('C:\DEVEL\git')
 from VetLife import app, db
 
 migrate = Migrate(app, db)
